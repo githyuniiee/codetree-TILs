@@ -7,11 +7,15 @@ public class Main {
     static int getMoney;
     static int max;
 
-    public static int calcul(int row, int colS, int colE){
+    public static int calcul(int rowS, int rowE, int colS, int colE){
         getMoney = 0;
 
-        for(int col=colS; col<=colE; col++){
+
+
+        for(int row = rowS; row<=rowE; row++){
+            for(int col=colS; col<=colE; col++){
             getMoney += arr[row][col];
+        }
         }
 
         return getMoney;
@@ -38,11 +42,11 @@ public class Main {
     for(int row=0; row<N; row++){
         for(int col=0; col<N; col++){
 
-            if(col +2 > N){
+            if(row + 2 >= N || col +2 >= N){
                 continue;
             }
 
-            getMoney = calcul(row, col, col+2);
+            getMoney = calcul(row, row+2, col, col+2);
              max = Math.max(max, getMoney);
         }
     }
